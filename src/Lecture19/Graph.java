@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import Lecture17.HeapGeneric;
+import Lecture16.HeapGeneric;
 
 /**
  * @author Garima Chhikara
