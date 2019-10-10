@@ -3,6 +3,8 @@ package Lecture12;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import Lecture12.BinaryTree.Node;
+
 public class BinaryTree {
 	private class Node {
 		int data;
@@ -158,5 +160,43 @@ public class BinaryTree {
 			}
 		}
 		System.out.println("END");
+	}
+	
+	public boolean isBST() {
+		return this.isBST(this.root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
+
+	private boolean isBST(Node node, int min, int max) {
+		if (node == null) {
+			return true;
+		}
+
+		if (node.data > max || node.data < min) {
+			return false;
+		} else if (!this.isBST(node.left, min, node.data)) {
+			return false;
+		} else if (!this.isBST(node.right, node.data, max)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public int sumLeaf() {
+		return this.sumLeaf(this.root);
+	}
+
+	private int sumLeaf(Node node) {
+		if (node == null) {
+			return 0;
+		}
+
+		if (node.left == null && node.right == null) {
+			return node.data;
+		}
+
+		int lsum = sumLeaf(node.left);
+		int rsum = sumLeaf(node.right);
+		return lsum + rsum;
 	}
 }
